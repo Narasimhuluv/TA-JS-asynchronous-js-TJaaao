@@ -1,5 +1,6 @@
 let input = document.querySelector('input');
 function handleChange(event) {
+  followersData.innerHTML = '';
   if (event.keyCode === 13) {
     let xhr = new XMLHttpRequest();
     let url = `https://api.github.com/users/${event.target.value}`;
@@ -50,7 +51,12 @@ let followingImage = document.querySelector('.followingImages');
 function createUI(mainImg, followersImg) {
   let mainAvatar = document.createElement('img');
   mainAvatar.src = mainImg.avatar_url;
-  mainImage.append(mainAvatar);
+  let name = document.createElement('h2');
+  name.innerHTML = mainImg.name;
+
+  let Login = document.createElement('p');
+  Login.innerHTML = mainImg.login;
+  mainImage.append(mainAvatar, name, Login);
 
   for (let i = 0; i <= 4; i++) {
     let followerImage = document.createElement('img');
@@ -69,19 +75,32 @@ function createUI2(following) {
 
 // -------------------------------------------------------------
 
+// let button = document.querySelector('.btn');
+
+// function catHandle() {
+//   let catimage = document.querySelector('.img');
+//   let xhr = new XMLHttpRequest();
+//   let url = `https://api.thecatapi.com/v1/images/search?limit=1&size=full`;
+//   xhr.open('GET', url);
+//   xhr.onload = function () {
+//     let catData = JSON.parse(xhr.response);
+//     catimage.src = catData.url;
+//     console.log(catData);
+//   };
+//   xhr.send();
+// }
+
+// button.addEventListener('click', catHandle);
+
 let button = document.querySelector('.btn');
+let catimage = document.querySelector('.img');
 
-function catHandle() {
-  let catimage = document.querySelector('.img');
-  let xhr = new XMLHttpRequest();
-  let url = `https://api.thecatapi.com/v1/images/search?limit=1&size=full`;
-  xhr.open('GET', url);
-  xhr.onload = function () {
-    let catData = JSON.parse(xhr.response);
-    catimage.src = catData.url;
-    console.log(catData);
-  };
-  xhr.send();
+function handleClick() {
+  fetch(
+    `https://api.thecatapi.com/v1/images/search?limit=1&size=full`,
+    function (catInfo) {
+      catimage.src = catInfo[0].url;
+    }
+  );
 }
-
-button.addEventListener('click', catHandle);
+button.addEventListener('click', handleClick);
