@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network Request</title>
+    <script src="index.js" defer></script>
+    <style>
+      .container {
+        max-width: 800px;
+        width: 100%;
+        margin: auto;
+      }
+      input {
+        display: block;
+        margin: auto;
+        padding: 0.3rem 0.8rem;
+        width: 20rem;
+      }
+      img {
+        width: 30%;
+        border-radius: 50%;
+        margin: 5rem auto;
+        display: block;
+      }
+      .followersImages img {
+        width: 15%;
+        margin: 2rem;
+      }
+      .flex {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" placeholder="Enter UserName" />
+      <div class="mainImage"></div>
+
+      <section>
+        <div class="followersImages flex"></div>
+        <div class="followingImages flex"></div>
+      </section>
+    </div>
+  </body>
+</html>
