@@ -1,51 +1,6 @@
-// let input = document.querySelector('input');
-// let image = document.querySelector('img');
-// let display = document.querySelector('.display');
-// let followersDisplay = document.querySelector('.followersDisplay');
-// function displayUI(arg, followers) {
-//   console.log(arg, followers);
-//   let mainAvatar = document.createElement('img');
-//   mainAvatar.src = arg.avatar_url;
-//   display.append(mainAvatar);
-
-//   for (let i = 0; i <= 4; i++) {
-//     let followersAvatar = document.createElement('img');
-//     followersAvatar.src = followers[i].avatar_url;
-//     followersDisplay.append(followersAvatar);
-//   }
-// }
-
-// function handleChange(event) {
-//   event.preventDefault();
-//   if (event.keyCode === 13) {
-//     let xhr = new XMLHttpRequest();
-//     let url = `https://api.github.com/users/${event.target.value}`;
-//     xhr.open('GET', url);
-//     xhr.onload = function () {
-//       let userData = JSON.parse(xhr.response);
-//       followersData(userData);
-//     };
-//     xhr.send();
-//     event.target.value = '';
-//   }
-// }
-// input.addEventListener('keyup', handleChange);
-
-// function followersData(arg) {
-//   let xhr = new XMLHttpRequest();
-//   let url = arg.followers_url;
-//   console.log(arg.followers_url);
-//   xhr.open('GET', url);
-//   xhr.onload = function () {
-//     let followers = JSON.parse(xhr.response);
-//     console.log(followers);
-//     displayUI(arg, followers);
-//   };
-//   xhr.send();
-// }
-
 let input = document.querySelector('input');
 function handleChange(event) {
+  followersData.innerHTML = '';
   if (event.keyCode === 13) {
     let xhr = new XMLHttpRequest();
     let url = `https://api.github.com/users/${event.target.value}`;
@@ -57,6 +12,7 @@ function handleChange(event) {
       followersData(userData);
     };
     xhr.send();
+    event.target.value = '';
   }
 }
 input.addEventListener('keyup', handleChange);
@@ -95,7 +51,12 @@ let followingImage = document.querySelector('.followingImages');
 function createUI(mainImg, followersImg) {
   let mainAvatar = document.createElement('img');
   mainAvatar.src = mainImg.avatar_url;
-  mainImage.append(mainAvatar);
+  let name = document.createElement('h2');
+  name.innerHTML = mainImg.name;
+
+  let Login = document.createElement('p');
+  Login.innerHTML = mainImg.login;
+  mainImage.append(mainAvatar, name, Login);
 
   for (let i = 0; i <= 4; i++) {
     let followerImage = document.createElement('img');
@@ -111,3 +72,35 @@ function createUI2(following) {
     followingImage.append(followingImage);
   }
 }
+
+// -------------------------------------------------------------
+
+// let button = document.querySelector('.btn');
+
+// function catHandle() {
+//   let catimage = document.querySelector('.img');
+//   let xhr = new XMLHttpRequest();
+//   let url = `https://api.thecatapi.com/v1/images/search?limit=1&size=full`;
+//   xhr.open('GET', url);
+//   xhr.onload = function () {
+//     let catData = JSON.parse(xhr.response);
+//     catimage.src = catData.url;
+//     console.log(catData);
+//   };
+//   xhr.send();
+// }
+
+// button.addEventListener('click', catHandle);
+
+let button = document.querySelector('.btn');
+let catimage = document.querySelector('.img');
+
+function handleClick() {
+  fetch(
+    `https://api.thecatapi.com/v1/images/search?limit=1&size=full`,
+    function (catInfo) {
+      catimage.src = catInfo[0].url;
+    }
+  );
+}
+button.addEventListener('click', handleClick);
