@@ -1,49 +1,3 @@
-// let input = document.querySelector('input');
-// let image = document.querySelector('img');
-// let display = document.querySelector('.display');
-// let followersDisplay = document.querySelector('.followersDisplay');
-// function displayUI(arg, followers) {
-//   console.log(arg, followers);
-//   let mainAvatar = document.createElement('img');
-//   mainAvatar.src = arg.avatar_url;
-//   display.append(mainAvatar);
-
-//   for (let i = 0; i <= 4; i++) {
-//     let followersAvatar = document.createElement('img');
-//     followersAvatar.src = followers[i].avatar_url;
-//     followersDisplay.append(followersAvatar);
-//   }
-// }
-
-// function handleChange(event) {
-//   event.preventDefault();
-//   if (event.keyCode === 13) {
-//     let xhr = new XMLHttpRequest();
-//     let url = `https://api.github.com/users/${event.target.value}`;
-//     xhr.open('GET', url);
-//     xhr.onload = function () {
-//       let userData = JSON.parse(xhr.response);
-//       followersData(userData);
-//     };
-//     xhr.send();
-//     event.target.value = '';
-//   }
-// }
-// input.addEventListener('keyup', handleChange);
-
-// function followersData(arg) {
-//   let xhr = new XMLHttpRequest();
-//   let url = arg.followers_url;
-//   console.log(arg.followers_url);
-//   xhr.open('GET', url);
-//   xhr.onload = function () {
-//     let followers = JSON.parse(xhr.response);
-//     console.log(followers);
-//     displayUI(arg, followers);
-//   };
-//   xhr.send();
-// }
-
 let input = document.querySelector('input');
 function handleChange(event) {
   if (event.keyCode === 13) {
@@ -57,6 +11,7 @@ function handleChange(event) {
       followersData(userData);
     };
     xhr.send();
+    event.target.value = '';
   }
 }
 input.addEventListener('keyup', handleChange);
