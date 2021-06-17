@@ -111,3 +111,22 @@ function createUI2(following) {
     followingImage.append(followingImage);
   }
 }
+
+// -------------------------------------------------------------
+
+let button = document.querySelector('.btn');
+
+function catHandle() {
+  let catimage = document.querySelector('.img');
+  let xhr = new XMLHttpRequest();
+  let url = `https://api.thecatapi.com/v1/images/search?limit=1&size=full`;
+  xhr.open('GET', url);
+  xhr.onload = function () {
+    let catData = JSON.parse(xhr.response);
+    catimage.src = catData.url;
+    console.log(catData);
+  };
+  xhr.send();
+}
+
+button.addEventListener('click', catHandle);
