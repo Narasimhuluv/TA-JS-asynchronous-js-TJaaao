@@ -39,7 +39,7 @@ function handleImage(event) {
 
         xhr.onerror = function () {
           setTimeout(() => {
-            reject(JSON.parse(xhr.response));
+            reject('Something Went Wrong');
           }, 3000);
         };
 
@@ -57,7 +57,7 @@ function handleImage(event) {
         }
       })
       .catch((error) => {
-        alert('Check Your Internet Connection');
+        error('Check Your Internet Connection');
       });
   }
 }
