@@ -44,11 +44,11 @@ function fetch() {
   return new Promise((resolve, reject) => {
     resolve(21);
   })
-    .then((value) => console.log(value + 10))
-    .then((value) => console.log(value + 100))
-    .catch((value) => {
-      if (value > 100) {
-        console.log('Error Message');
+    .then((value) => value + 10)
+    .then((value) => value + 100)
+    .catch((error) => {
+      if (error > 100) {
+        error('Error Message');
       }
     });
 }
@@ -59,12 +59,12 @@ function fetch() {
     resolve(['A']);
   })
     .then((value) => {
-      concat(value + 'B');
+      return value.concat('B');
     })
     .then(() => {
       return { 0: 'A', 1: 'B' };
     })
-    .then((value) => console.log(value));
+    .then((value) => value);
 }
 fetch();
 
@@ -76,11 +76,14 @@ function fetch() {
   return new Promise((resolve, reject) => {
     resolve('John');
   })
-    .then(() => resolve('Arya'))
-    .then(() =>
+    .then((value) => {
+      return 'Arya';
+    })
+    .then((value) =>
       setTimeout(() => {
-        resolve('Bran');
+        return 'Bran';
       }, 2000)
     )
-    .then((value) => console.log(value));
+    .then((value) => value);
 }
+fetch();
