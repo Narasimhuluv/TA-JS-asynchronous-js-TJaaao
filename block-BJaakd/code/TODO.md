@@ -2,18 +2,46 @@
 
 ```js
 // Your code
+function fetch() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise Resolved');
+    }, 1000);
+  }).then((value) => value);
+}
 ```
 
 2. Create another promise. Now have it reject with a value of `Rejected Promise!` without using `setTimeout`. Print the contents of the promise after it has been rejected by passing console.log to `.catch`
 
 ```js
 // Your code
+function fetch() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise Resolved');
+    }, 1000);
+    setTimeout(() => {
+      reject('Rejected Promise');
+    }, 1000);
+  })
+    .then((value) => value)
+    .catch((error) => error);
+}
 ```
 
 3. Create another promise. Now have it reject with a value of `Rejected Promise!` without using `setTimeout`. Print the contents of the promise after it has been rejected by passing console.log to `.catch` and also use `.finally` to log message `Promise Settled!`.
 
 ```js
 // Your code
+function fetch() {
+  return new Promise((resolve, reject) => {
+    resolve('Promise Resolved');
+    reject('Rejected Promise');
+  })
+    .then((value) => value)
+    .catch((error) => error)
+    .finally((final) => 'Promise Settled');
+}
 ```
 
 4. What will be the output of the code below.
@@ -28,12 +56,28 @@ setTimeout(() => console.log('B'), 0); // callback queue
 Promise.resolve().then(() => console.log('C'));
 
 console.log('D');
+
+// output
+A;
+D;
+C;
+B;
 ```
 
 5. Write a function named `wait` that accepts `time` in ms returns a promise. The promise gets resolved after given time.
 
 ```js
 // Your code
+function wait(time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise Resolved');
+    }, time);
+  })
+    .then((value) => value)
+    .catch((error) => error('Promise Rejected'));
+}
+wait(2000);
 ```
 
 6. Do the following:
@@ -47,6 +91,19 @@ console.log('D');
 
 ```js
 // Your code
+function fetch() {
+  return new Promise((resolve, reject) => {
+    resolve(21);
+  })
+    .then((value) => value + 10)
+    .then((value) => value + 100)
+    .catch((error) => {
+      if (error > 100) {
+        error('Error Message');
+      }
+    });
+}
+fetch();
 ```
 
 7. Do the following:
@@ -59,6 +116,19 @@ console.log('D');
 
 ```js
 // Your code
+function fetch() {
+  return new Promise((resolve, reject) => {
+    resolve(['A']);
+  })
+    .then((value) => {
+      return value.concat('B');
+    })
+    .then(() => {
+      return { 0: 'A', 1: 'B' };
+    })
+    .then((value) => value);
+}
+fetch();
 ```
 
 8. Do the following:
@@ -94,4 +164,19 @@ console.log('D');
 
 ```js
 // Your code
+function fetch() {
+  return new Promise((resolve, reject) => {
+    resolve('John');
+  })
+    .then((value) => {
+      return 'Arya';
+    })
+    .then((value) =>
+      setTimeout(() => {
+        return 'Bran';
+      }, 2000)
+    )
+    .then((value) => value);
+}
+fetch();
 ```
