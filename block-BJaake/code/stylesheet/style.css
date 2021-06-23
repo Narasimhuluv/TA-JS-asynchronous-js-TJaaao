@@ -1,0 +1,194 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* custom styles */
+ul {
+  max-width: 1700px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+  margin: auto;
+}
+
+.list {
+  width: 31%;
+  margin-top: 1.5rem;
+  /* border-radius: 1rem; */
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  position: relative;
+  /* align-items: center; */
+}
+.ndtv {
+  font-size: 1.3rem;
+  background-color: teal;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.dataDiv {
+  width: 40%;
+}
+
+.articleImage {
+  width: 50%;
+  height: 200px;
+  /* border-radius: 1rem; */
+}
+.titleNews {
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+.readMore {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  border: none;
+  background: none;
+  border: 1px solid grey;
+  background-color: black;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+}
+
+#source {
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 0.5rem 2rem;
+}
