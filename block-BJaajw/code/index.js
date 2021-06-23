@@ -51,6 +51,7 @@ let allNews = [];
 
 fetch(url)
     .then((res) => {
+        
         if (!res.ok) {
           throw new error(`Error Happend : ${res.status}`)
         }
