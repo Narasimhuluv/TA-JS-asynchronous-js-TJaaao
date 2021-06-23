@@ -48,15 +48,25 @@
 let url = `https://api.spaceflightnewsapi.net/v3/articles?_limit=30`;
 let UnorderdList = document.querySelector('ul');
 let allNews = [];
+let isLoding = false;
 
-fetch(url)
-    .then((res) => {
-        
-        if (!res.ok) {
-          throw new error(`Error Happend : ${res.status}`)
-        }
-        return res.json()
-  })
+function handleSpinner() {
+    if (isLoding) {
+        UnorderdList.innerHTML = `<div class = "donut"> </div>`
+    }
+}
+
+function init() {
+    isLoding = true;
+    handleSpinner();
+    fetch(url)
+        .then((res) => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw new Error(`Response is not OK!`)
+            }   
+    })
   .then((news) => {
     createUI(news);
     allNews = news;
@@ -66,7 +76,9 @@ fetch(url)
     console.log(allSites);
   }).catch((error) => {
       UnorderdList.innerHTML = error
-  })
+  }).finally(navigator.onLine)
+}
+init();
 
 function createUI(data) {
   UnorderdList.innerHTML = '';
@@ -112,3 +124,4 @@ source.addEventListener('change', (event) => {
   createUI(fileterNews);
   console.log(fileterNews);
 });
+
