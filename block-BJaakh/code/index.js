@@ -105,11 +105,14 @@ function createUI(data) {
     }
 
     let span = document.createElement('span');
-    contenteditable = 'true';
+    span.contenteditable = 'true';
+
     label.setAttribute('contenteditable', 'true');
+    label.style.fontSize = '1.2rem';
     span.setAttribute('data-id', element._id);
-    span.innerText = 'x';
+    span.innerText = '❌';
     span.style.cursor = 'pointer';
+    span.style.fontSize = '1.1rem';
     span.addEventListener('click', handleClick);
     label.addEventListener('blur', () => {
       handleChange(event, element.title, element._id);
